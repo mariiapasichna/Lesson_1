@@ -9,7 +9,7 @@ public class Crossword {
     public static final int LINES = 3;
     public static final int COLUMNS = 5;
 
-    public static void searchWord(String fileCrossword, String word) {
+    public static boolean searchWord(String fileCrossword, String word) {
         char[][] crossword = new char[LINES][COLUMNS];
         createArrayFromFile(crossword, fileCrossword);
         for (int i = 0; i < LINES; i++) {
@@ -17,33 +17,41 @@ public class Crossword {
                 if (crossword[i][j] == word.charAt(0)) {
                     searchHorizontal(crossword, word, i, j);
                     searchVertical(crossword, word, i, j);
+                    if (searchHorizontal(crossword, word, i, j) || searchVertical(crossword, word, i, j)) {
+                        System.out.println("Word " + word + " is found");
+                        return true;
+                    }
                 }
             }
         }
+        System.out.println("Word " + word + " is not found");
+        return false;
     }
 
-    private static void searchVertical(char[][] crossword, String word, int i, int j) {
+    private static boolean searchVertical(char[][] crossword, String word, int i, int j) {
         if (word.length() + i <= LINES) {
             for (int k = 1; k < word.length(); k++) {
                 if (word.charAt(k) == crossword[i + k][j]) {
                     if (k == word.length() - 1) {
-                        System.out.println("Word " + word + " found by vertical");
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
 
-    private static void searchHorizontal(char[][] crossword, String word, int i, int j) {
+    private static boolean searchHorizontal(char[][] crossword, String word, int i, int j) {
         if (word.length() + j <= COLUMNS) {
             for (int k = 1; k < word.length(); k++) {
                 if (word.charAt(k) == crossword[i][j + k]) {
                     if (k == word.length() - 1) {
-                        System.out.println("Word " + word + " found by horizontal");
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
 
     private static char[][] createArrayFromFile(char[][] crossword, String fileCrossword) {
