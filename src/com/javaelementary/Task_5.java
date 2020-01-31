@@ -15,7 +15,7 @@ public class Task_5 {
     private static String removeSpaces(String s) {
         s = s.trim();
         StringBuilder stringBuilder = new StringBuilder(s);
-        for (int i = stringBuilder.length() - 1; i > 0; i--) {
+        for (int i = stringBuilder.length() - 1; i >= 0; i--) {
             if (stringBuilder.charAt(i) == ' ' && stringBuilder.charAt(i + 1) == ' ') {
                 stringBuilder.deleteCharAt(i);
             }
