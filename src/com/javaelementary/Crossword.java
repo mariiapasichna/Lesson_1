@@ -62,7 +62,7 @@ public class Crossword {
                     for (int j = 0; j < COLUMNS; j++) {
                         crossword[i][j] = currentLine.charAt(k);
                         k++;
-                        if (k > currentLine.length()) {
+                        if (k >= currentLine.length()) {
                             break;
                         }
                     }
