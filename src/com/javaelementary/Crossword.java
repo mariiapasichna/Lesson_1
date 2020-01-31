@@ -15,8 +15,6 @@ public class Crossword {
         for (int i = 0; i < LINES; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 if (crossword[i][j] == word.charAt(0)) {
-                    searchHorizontal(crossword, word, i, j);
-                    searchVertical(crossword, word, i, j);
                     if (searchHorizontal(crossword, word, i, j) || searchVertical(crossword, word, i, j)) {
                         System.out.println("Word " + word + " is found");
                         return true;

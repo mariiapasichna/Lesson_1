@@ -13,20 +13,15 @@ public class Task_2 {
     public static final int TO = 100;
 
     public static void main(String[] args) {
-        int number = 0;
         for (int i = FROM; i <= TO; i++) {
-            number = i;
-            if (number % 3 == 0 && number % 5 != 0) {
-                System.out.print("Hello ");
-            }
-            if (number % 5 == 0 && number % 3 != 0) {
-                System.out.print("World ");
-            }
-            if (number % 3 == 0 && number % 5 == 0) {
+            if (i % 3 == 0 && i % 5 == 0) {
                 System.out.print("HelloWorld ");
-            }
-            if (number % 3 != 0 && number % 5 != 0) {
-                System.out.print(number + " ");
+            } else if (i % 3 == 0) {
+                System.out.print("Hello ");
+            } else if (i % 5 == 0) {
+                System.out.print("World ");
+            } else {
+                System.out.print(i + " ");
             }
         }
     }

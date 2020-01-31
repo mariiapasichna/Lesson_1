@@ -14,10 +14,14 @@ public class Task_5 {
 
     private static String removeSpaces(String s) {
         s = s.trim();
-        while (s.contains("  ")) {
-            s = s.replace("  ", " ");
+        StringBuilder stringBuilder = new StringBuilder(s);
+        for (int i = stringBuilder.length() - 1; i > 0; i--) {
+            if (stringBuilder.charAt(i) == ' ' && stringBuilder.charAt(i + 1) == ' ') {
+                stringBuilder.deleteCharAt(i);
+            }
         }
-        System.out.println(s);
-        return s;
+        String s1 = String.valueOf(stringBuilder);
+        System.out.println(s1);
+        return s1;
     }
 }
